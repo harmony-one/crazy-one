@@ -1,0 +1,40 @@
+const ENS = require('@ensdomains/ensjs').default
+const Web3 = require('web3')
+const { hash } = require('eth-ens-namehash')
+
+const WEB3_URL = 'https://api.s0.t.hmny.io'
+const ENS_ADDRESS = '0x3fa4135B88cE1035Fed373F0801118a3340B37e7'
+
+const EthRegistrarSubdomainRegistrar = require('../../build/contracts/EthRegistrarSubdomainRegistrar')
+const apiFactory = () => ({
+  ens: null,
+  web3: null,
+  subdomainRegistrar: null,
+  async init (subdomain) {
+    this.web3 = new Web3(WEB3_URL)
+
+    const provider = new Web3.providers.HttpProvider(WEB3_URL)
+
+    this.ens = new ENS({ provider, ensAddress: ENS_ADDRESS })
+
+    const subdomainRegisterAddress = await this.ens.name('crazy.one').getAddress()
+
+    this.subdomainRegistrar = new this.web3.eth.Contract(
+      EthRegistrarSubdomainRegistrar.abi,
+      subdomainRegisterAddress
+    )
+
+    const twitter = await this.twitterLookup(subdomain)
+
+    return twitter
+  },
+
+  async twitterLookup (subdomain) {
+    return await this.subdomainRegistrar.methods.twitter(hash(`${subdomain}.crazy.one`)).call()
+  }
+})
+
+export default ({ }, inject) => {
+  const subdomain = apiFactory()
+  inject('subdomain', subdomain)
+}

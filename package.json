@@ -1,0 +1,26 @@
+{
+  "name": "harmony-crazy-one",
+  "version": "1.0.0",
+  "description": "Harmony Crazy ONE",
+  "author": "Giv Parvaneh <gparvaneh@gmail.com>",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "@ensdomains/ensjs": "^2.0.1",
+    "eth-ens-namehash": "^2.0.8",
+    "nuxt": "^2.13.0",
+    "web3": "1.2.11"
+  },
+  "devDependencies": {
+    "@nuxtjs/eslint-config": "^6.0.0",
+    "@nuxtjs/eslint-module": "^3.0.2",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.25.0",
+    "eslint-plugin-nuxt": "^2.0.0"
+  }
+}
