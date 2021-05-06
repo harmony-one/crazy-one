@@ -23,9 +23,7 @@ const apiFactory = () => ({
       EthRegistrarSubdomainRegistrar.abi,
       subdomainRegisterAddress
     )
-
     const twitter = await this.twitterLookup(subdomain)
-
     return twitter
   },
 
@@ -34,7 +32,7 @@ const apiFactory = () => ({
   }
 })
 
-export default ({ }, inject) => {
+export default ({}, inject) => {
   const subdomain = apiFactory()
   inject('subdomain', subdomain)
 }

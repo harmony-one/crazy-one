@@ -20,9 +20,9 @@ export default {
       try {
         const subdomain = document.location.host.split('.')[0]
         const twitter = await this.$subdomain.init(subdomain)
-        this.src = `https://harmony.one/#${twitter || 'stse'}`
+        this.src = `https://harmony.one/#${twitter || 'stse'}=1`
       } catch (e) {
-        this.src = 'https://harmony.one/#stse'
+        this.src = 'https://harmony.one/#stse=1'
       }
 
       console.log('Loading', this.src)
