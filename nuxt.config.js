@@ -24,12 +24,7 @@ module.exports = {
       { hid: 'twitter:card', property: 'twitter:card', content: 'summary_large_image' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.png' },
-      {
-        rel: 'stylesheet',
-        href:
-          'https://fonts.googleapis.com/css?family=Overpass:100,200,300,400,600,700,800,900|Overpass+Mono:300,400'
-      }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.png' }
     ]
   },
   /*
