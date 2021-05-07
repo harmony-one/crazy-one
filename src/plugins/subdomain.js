@@ -1,6 +1,7 @@
 const ENS = require('@ensdomains/ensjs').default
 const Web3 = require('web3')
 const { hash } = require('eth-ens-namehash')
+const oldnames = require('./oldnames.json')
 
 const WEB3_URL = 'https://api.s0.t.hmny.io'
 const ENS_ADDRESS = '0x3fa4135B88cE1035Fed373F0801118a3340B37e7'
@@ -23,7 +24,12 @@ const apiFactory = () => ({
       EthRegistrarSubdomainRegistrar.abi,
       subdomainRegisterAddress
     )
-    const twitter = await this.twitterLookup(subdomain)
+    let twitter = await this.twitterLookup(subdomain)
+
+    if (!twitter && oldnames[subdomain]) {
+      twitter = oldnames[subdomain]
+    }
+
     return twitter
   },
 
