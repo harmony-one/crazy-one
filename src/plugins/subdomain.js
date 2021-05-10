@@ -27,7 +27,7 @@ const apiFactory = () => ({
     let twitter = await this.twitterLookup(subdomain)
 
     if (!twitter && oldnames[subdomain]) {
-      twitter = oldnames[subdomain]
+      twitter = oldnames[subdomain] && oldnames[subdomain].trim()
     }
 
     return twitter
