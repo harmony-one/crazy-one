@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@ensdomains/ensjs": "^2.0.1",
+    "@harmony-js/crypto": "^0.1.56",
     "eth-ens-namehash": "^2.0.8",
     "nuxt": "^2.13.0",
     "web3": "1.2.11"

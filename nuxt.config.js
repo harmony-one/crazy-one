@@ -24,7 +24,12 @@ module.exports = {
       { hid: 'twitter:card', property: 'twitter:card', content: 'summary_large_image' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.png' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.png' },
+      {
+        rel: 'stylesheet',
+        href:
+          'https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap'
+      }
     ]
   },
   /*

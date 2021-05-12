@@ -1,3 +1,4 @@
+import { getAddress } from '@harmony-js/crypto'
 const ENS = require('@ensdomains/ensjs').default
 const Web3 = require('web3')
 const { hash } = require('eth-ens-namehash')
@@ -33,8 +34,21 @@ const apiFactory = () => ({
     return twitter
   },
 
+  async getAddress (subdomain) {
+    const subdomainAddress = await this.ens.name(`${subdomain}.crazy.one`).getAddress()
+
+    if (subdomainAddress) {
+      return (this.oneAddress(subdomainAddress))
+    }
+    return null
+  },
+
   async twitterLookup (subdomain) {
     return await this.subdomainRegistrar.methods.twitter(hash(`${subdomain}.crazy.one`)).call()
+  },
+
+  oneAddress (address) {
+    return getAddress(address).bech32
   }
 })
 
